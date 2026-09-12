@@ -1,4 +1,4 @@
-name: Restore previous Schindler hero image
+name: Update Schindler services image
 on:
   push:
     paths:
@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Restore previous hero
+      - name: Replace services image with mask ventilation
         run: |
           python - <<'PY'
           from pathlib import Path
           p=Path('index.html')
           s=p.read_text(encoding='utf-8')
-          old='schindler-hero-mask.jpg'
-          new='https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png'
+          old='https://christiandiebner86-cpu.github.io/halle-website-test/hero-trachealkanuele-beatmung.png'
+          new='leistungen-maskenbeatmung.png'
           if old not in s:
-              raise SystemExit('current hero image not found')
+              raise SystemExit('current services image not found')
           s=s.replace(old,new,1)
-          s=s.replace('alt="Außerklinische Intensivpflege mit nicht-invasiver Maskenbeatmung"','alt="Persönliche außerklinische Intensivpflege"',1)
+          s=s.replace('alt="Beatmungs- und Trachealkanülenversorgung"','alt="Außerklinische Intensivpflege mit nicht-invasiver Maskenbeatmung"',1)
           p.write_text(s,encoding='utf-8')
           PY
       - name: Commit patch
@@ -29,5 +29,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html
-          git commit -m 'Restore previous Schindler hero image'
+          git commit -m 'Use mask ventilation image for services'
           git push
