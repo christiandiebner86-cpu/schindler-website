@@ -1,6 +1,8 @@
 name: Add Schindler application form
 on:
   push:
+    branches:
+      - main
     paths:
       - '.github/workflows/fix-hero-medical.yml'
 permissions:
@@ -10,23 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Add quick application section
+      - name: Patch index
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('index.html')
-          s=p.read_text(encoding='utf-8')
-          s=s.replace('href="mailto:intensivpflegeschindler@gmail.com?subject=Bewerbung%20Intensivpflege%20Schindler">Jetzt bewerben →</a>','href="#bewerbung">Jetzt bewerben →</a>',1)
-          marker='<section class="contact" id="kontakt">'
-          if marker not in s:
-              raise SystemExit('contact marker not found')
-          block='''<section class="about" id="bewerbung"><div class="wrap"><div class="section-title"><h2>Schnellbewerbung</h2><p>Pflegefachkraft? Bewirb dich in wenigen Minuten – ganz ohne Anschreiben.</p></div><div class="contact-panel" style="max-width:820px;margin:auto"><form action="mailto:intensivpflegeschindler@gmail.com" method="post" enctype="text/plain"><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><label><strong>Name *</strong><input required name="Name" autocomplete="name" style="width:100%;padding:13px;margin-top:6px;border:1px solid #cbdde2;border-radius:10px;font:inherit"></label><label><strong>Telefon *</strong><input required name="Telefon" type="tel" autocomplete="tel" style="width:100%;padding:13px;margin-top:6px;border:1px solid #cbdde2;border-radius:10px;font:inherit"></label></div><label style="display:block;margin-top:16px"><strong>Qualifikation *</strong><select required name="Qualifikation" style="width:100%;padding:13px;margin-top:6px;border:1px solid #cbdde2;border-radius:10px;font:inherit;background:white"><option value="">Bitte auswählen</option><option>Pflegefachfrau / Pflegefachmann</option><option>Gesundheits- und Krankenpfleger/in</option><option>Altenpfleger/in</option><option>Andere Pflegefachkraft</option></select></label><label style="display:block;margin-top:16px"><strong>Nachricht (optional)</strong><textarea name="Nachricht" rows="4" style="width:100%;padding:13px;margin-top:6px;border:1px solid #cbdde2;border-radius:10px;font:inherit"></textarea></label><p style="font-size:13px;color:#65758a">Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Angaben zur Bearbeitung der Bewerbung gemäß unserer Datenschutzerklärung einverstanden.</p><button class="btn primary" type="submit" style="cursor:pointer;font:inherit">Bewerbung senden →</button></form></div></div></section>
-'''
-          s=s.replace(marker,block+marker,1)
-          s=s.replace('<a class="mobile-apply" href="#kontakt">','<a class="mobile-apply" href="#bewerbung">',1)
-          p.write_text(s,encoding='utf-8')
-          PY
-      - name: Commit patch
+          echo 'ZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmltcG9ydCBiYXNlNjQKcD1QYXRoKCJpbmRleC5odG1sIikKcz1wLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQpzPXMucmVwbGFjZSgnaHJlZj0ibWFpbHRvOmludGVuc2l2cGZsZWdlc2NoaW5kbGVyQGdtYWlsLmNvbT9zdWJqZWN0PUJld2VyYnVuZyUyMEludGVuc2l2cGZsZWdlJTIwU2NoaW5kbGVyIj5KZXR6dCBiZXdlcmJlbiDihpI8L2E+JywnaHJlZj0iI2Jld2VyYnVuZyI+SmV0enQgYmV3ZXJiZW4g4oaSPC9hPicsMSkKbWFya2VyPSc8c2VjdGlvbiBjbGFzcz0iY29udGFjdCIgaWQ9ImtvbnRha3QiPicKYmxvY2s9YmFzZTY0LmI2NGRlY29kZSgiUEhObFkzUnBiMjRnWTJ4aGMzTTlJbUZpYjNWMElpQnBaRDBpWW1WM1pYSmlkVzVuSWo0OFpHbDJJR05zWVhOelBTSjNjbUZ3SWo0OFpHbDJJR05zWVhOelBTSnpaV04wYVc5dUxYUnBkR3hsSWo0OGFESStVMk5vYm1Wc2JHSmxkMlZ5WW5WdVp6d3ZhREkrUEhBK1VHWnNaV2RsWm1GamFHdHlZV1owUHlCQ1pYZHBjbUlnWkdsamFDQnBiaUIzWlc1cFoyVnVJRTFwYm5WMFpXNGc0b0NUSUdkaGJub2diMmh1WlNCQmJuTmphSEpsYVdKbGJpNDhMM0ErUEM5a2FYWStQR1JwZGlCamJHRnpjejBpWTI5dWRHRmpkQzF3WVc1bGJDSWdjM1I1YkdVOUltMWhlQzEzYVdSMGFEbzRNakJ3ZUR0dFlYSm5hVzQ2WVhWMGJ5SStQR1p2Y20wZ1lXTjBhVzl1UFNKdFlXbHNkRzg2YVc1MFpXNXphWFp3Wm14bFoyVnpZMmhwYm1Sc1pYSkFaMjFoYVd3dVkyOXRJaUJ0WlhSb2IyUTlJbkJ2YzNRaUlHVnVZM1I1Y0dVOUluUmxlSFF2Y0d4aGFXNGlQanhrYVhZZ2MzUjViR1U5SW1ScGMzQnNZWGs2WjNKcFpEdG5jbWxrTFhSbGJYQnNZWFJsTFdOdmJIVnRibk02TVdaeUlERm1janRuWVhBNk1UWndlQ0krUEd4aFltVnNQanh6ZEhKdmJtYytUbUZ0WlNBcVBDOXpkSEp2Ym1jK1BHbHVjSFYwSUhKbGNYVnBjbVZrSUc1aGJXVTlJazVoYldVaUlHRjFkRzlqYjIxd2JHVjBaVDBpYm1GdFpTSWdjM1I1YkdVOUluZHBaSFJvT2pFd01DVTdjR0ZrWkdsdVp6b3hNM0I0TzIxaGNtZHBiaTEwYjNBNk5uQjRPMkp2Y21SbGNqb3hjSGdnYzI5c2FXUWdJMk5pWkdSbE1qdGliM0prWlhJdGNtRmthWFZ6T2pFd2NIZzdabTl1ZERwcGJtaGxjbWwwSWo0OEwyeGhZbVZzUGp4c1lXSmxiRDQ4YzNSeWIyNW5QbFJsYkdWbWIyNGdLand2YzNSeWIyNW5QanhwYm5CMWRDQnlaWEYxYVhKbFpDQnVZVzFsUFNKVVpXeGxabTl1SWlCMGVYQmxQU0owWld3aUlHRjFkRzlqYjIxd2JHVjBaVDBpZEdWc0lpQnpkSGxzWlQwaWQybGtkR2c2TVRBd0pUdHdZV1JrYVc1bk9qRXpjSGc3YldGeVoybHVMWFJ2Y0RvMmNIZzdZbTl5WkdWeU9qRndlQ0J6YjJ4cFpDQWpZMkprWkdVeU8ySnZjbVJsY2kxeVlXUnBkWE02TVRCd2VEdG1iMjUwT21sdWFHVnlhWFFpUGp3dmJHRmlaV3crUEM5a2FYWStQR3hoWW1Wc0lITjBlV3hsUFNKa2FYTndiR0Y1T21Kc2IyTnJPMjFoY21kcGJpMTBiM0E2TVRad2VDSStQSE4wY205dVp6NVJkV0ZzYVdacGEyRjBhVzl1SUNvOEwzTjBjbTl1Wno0OGMyVnNaV04wSUhKbGNYVnBjbVZrSUc1aGJXVTlJbEYxWVd4cFptbHJZWFJwYjI0aUlITjBlV3hsUFNKM2FXUjBhRG94TURBbE8zQmhaR1JwYm1jNk1UTndlRHR0WVhKbmFXNHRkRzl3T2pad2VEdGliM0prWlhJNk1YQjRJSE52Ykdsa0lDTmpZbVJrWlRJN1ltOXlaR1Z5TFhKaFpHbDFjem94TUhCNE8yWnZiblE2YVc1b1pYSnBkRHRpWVdOclozSnZkVzVrT25kb2FYUmxJajQ4YjNCMGFXOXVJSFpoYkhWbFBTSWlQa0pwZEhSbElHRjFjM2ZEcEdoc1pXNDhMMjl3ZEdsdmJqNDhiM0IwYVc5dVBsQm1iR1ZuWldaaFkyaG1jbUYxSUM4Z1VHWnNaV2RsWm1GamFHMWhibTQ4TDI5d2RHbHZiajQ4YjNCMGFXOXVQa2RsYzNWdVpHaGxhWFJ6TFNCMWJtUWdTM0poYm10bGJuQm1iR1ZuWlhJdmFXNDhMMjl3ZEdsdmJqNDhiM0IwYVc5dVBrRnNkR1Z1Y0dac1pXZGxjaTlwYmp3dmIzQjBhVzl1UGp4dmNIUnBiMjQrUVc1a1pYSmxJRkJtYkdWblpXWmhZMmhyY21GbWREd3ZiM0IwYVc5dVBqd3ZjMlZzWldOMFBqd3ZiR0ZpWld3K1BHeGhZbVZzSUhOMGVXeGxQU0prYVhOd2JHRjVPbUpzYjJOck8yMWhjbWRwYmkxMGIzQTZNVFp3ZUNJK1BITjBjbTl1Wno1T1lXTm9jbWxqYUhRZ0tHOXdkR2x2Ym1Gc0tUd3ZjM1J5YjI1blBqeDBaWGgwWVhKbFlTQnVZVzFsUFNKT1lXTm9jbWxqYUhRaUlISnZkM005SWpRaUlITjBlV3hsUFNKM2FXUjBhRG94TURBbE8zQmhaR1JwYm1jNk1UTndlRHR0WVhKbmFXNHRkRzl3T2pad2VEdGliM0prWlhJNk1YQjRJSE52Ykdsa0lDTmpZbVJrWlRJN1ltOXlaR1Z5TFhKaFpHbDFjem94TUhCNE8yWnZiblE2YVc1b1pYSnBkQ0krUEM5MFpYaDBZWEpsWVQ0OEwyeGhZbVZzUGp4d0lITjBlV3hsUFNKbWIyNTBMWE5wZW1VNk1UTndlRHRqYjJ4dmNqb2pOalUzTlRoaElqNU5hWFFnWkdWdElFRmljMlZ1WkdWdUlHVnlhMnpEcEhKemRDQmtkU0JrYVdOb0lHMXBkQ0JrWlhJZ1ZtVnlZWEppWldsMGRXNW5JR1JsYVc1bGNpQkJibWRoWW1WdUlIcDFjaUJDWldGeVltVnBkSFZ1WnlCa1pYSWdRbVYzWlhKaWRXNW5JR2RsYmNPa3c1OGdkVzV6WlhKbGNpQkVZWFJsYm5OamFIVjBlbVZ5YTJ6RHBISjFibWNnWldsdWRtVnljM1JoYm1SbGJpNDhMM0ErUEdKMWRIUnZiaUJqYkdGemN6MGlZblJ1SUhCeWFXMWhjbmtpSUhSNWNHVTlJbk4xWW0xcGRDSWdjM1I1YkdVOUltTjFjbk52Y2pwd2IybHVkR1Z5TzJadmJuUTZhVzVvWlhKcGRDSStRbVYzWlhKaWRXNW5JSE5sYm1SbGJpRGlocEk4TDJKMWRIUnZiajQ4TDJadmNtMCtQQzlrYVhZK1BDOWthWFkrUEM5elpXTjBhVzl1UGdvPSIpLmRlY29kZSgidXRmLTgiKQppZiAnaWQ9ImJld2VyYnVuZyInIG5vdCBpbiBzOgogICAgaWYgbWFya2VyIG5vdCBpbiBzOiByYWlzZSBTeXN0ZW1FeGl0KCJjb250YWN0IG1hcmtlciBub3QgZm91bmQiKQogICAgcz1zLnJlcGxhY2UobWFya2VyLGJsb2NrK21hcmtlciwxKQpzPXMucmVwbGFjZSgnPGEgY2xhc3M9Im1vYmlsZS1hcHBseSIgaHJlZj0iI2tvbnRha3QiPicsJzxhIGNsYXNzPSJtb2JpbGUtYXBwbHkiIGhyZWY9IiNiZXdlcmJ1bmciPicsMSkKcC53cml0ZV90ZXh0KHMsZW5jb2Rpbmc9InV0Zi04IikK' | base64 -d > /tmp/patch.py
+          python /tmp/patch.py
+      - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
