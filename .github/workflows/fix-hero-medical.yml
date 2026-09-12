@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Replace inconsistent hero image
+      - name: Use approved Schindler hero
         run: |
           python - <<'PY'
           from pathlib import Path
           p=Path('index.html')
           s=p.read_text(encoding='utf-8')
-          old='https://christiandiebner86-cpu.github.io/halle-website-test/hero-beatmung-tk-richtig.png'
-          new='https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png'
+          old='https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png'
+          new='schindler-hero-mask.jpg'
           if old not in s:
-              raise SystemExit('old hero URL not found')
+              raise SystemExit('current hero URL not found')
           s=s.replace(old,new,1)
-          s=s.replace('alt="Außerklinische Intensivpflege und Beatmungspflege"','alt="Persönliche außerklinische Intensivpflege"',1)
+          s=s.replace('alt="Persönliche außerklinische Intensivpflege"','alt="Außerklinische Intensivpflege mit nicht-invasiver Maskenbeatmung"',1)
           p.write_text(s,encoding='utf-8')
           PY
       - name: Commit patch
@@ -29,5 +29,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html
-          git commit -m 'Use medically consistent hero image'
+          git commit -m 'Use approved Schindler hero image'
           git push
