@@ -1,30 +1,8 @@
-name: Publish care info branch
+name: Publish care info branch (disabled)
 on:
-  push:
-    branches: [main]
-permissions:
-  contents: write
+  workflow_dispatch:
 jobs:
-  patch:
+  noop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Patch page and publish branch
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('index.html'); s=p.read_text()
-          if 'id="wann-intensivpflege"' not in s:
-              css='''.care-info{padding:70px 0;background:#f7fbfc}.care-info-card{background:#fff;border:1px solid #dcecef;border-radius:24px;box-shadow:0 12px 34px #17365312;overflow:hidden}.care-info-head{padding:22px 28px;border-bottom:1px solid #dfeaed;background:linear-gradient(90deg,#f5fbfc,#eef8fa)}.care-info-head h2{margin:0;color:#173653;font-size:clamp(28px,3.2vw,42px);line-height:1.12}.care-info-body{padding:28px}.care-info-body>p{color:#5b6f80;font-size:17px;line-height:1.7;margin:0 0 24px}.care-info-body h3{color:#173653;font-size:26px;margin:0 0 16px}.care-list{display:grid;gap:0;margin:0 0 22px;padding:0;list-style:none}.care-list li{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid #e7eff1;color:#41596d;font-size:17px;line-height:1.55}.care-check{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#087f8c;color:#fff;font-weight:900}.care-note{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:center;background:#eaf8fa;border:1px solid #cfecef;color:#173653;border-radius:16px;padding:18px 20px;font-weight:850;line-height:1.55;margin:24px 0}.care-note-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#0597a5;color:#fff;font-size:22px;font-weight:900}.care-cta{display:inline-flex;align-items:center;gap:14px;min-height:60px;padding:0 24px;border-radius:16px;background:linear-gradient(135deg,#087f8c,#0597a5);color:#fff!important;font-weight:950;text-decoration:none;box-shadow:0 10px 24px #087f8c33}.care-cta:hover{background:linear-gradient(135deg,#173653,#087f8c);transform:translateY(-1px)}.care-cta small{display:block;font-weight:700;opacity:.92}.care-cta-arrow{font-size:24px}@media(max-width:760px){.care-info{padding:44px 0}.care-info-head{padding:20px}.care-info-body{padding:20px}.care-list li{font-size:16px}.care-note{grid-template-columns:1fr}.care-note-icon{margin-bottom:2px}.care-cta{width:100%;justify-content:center;text-align:center;padding:14px 18px}}'''
-              s=s.replace('</style>',css+'</style>',1)
-              section='''<section class="care-info" id="wann-intensivpflege"><div class="wrap"><div class="care-info-card"><div class="care-info-head"><h2>🫁 Wann ist außerklinische Intensivpflege notwendig?</h2></div><div class="care-info-body"><p>Außerklinische Intensivpflege kommt für schwerstkranke Kinder, Jugendliche und Erwachsene infrage, wenn ein besonders hoher Bedarf an medizinischer Behandlungspflege besteht. Entscheidend ist insbesondere, dass eine geeignete Pflegefachkraft während des Versorgungszeitraums ständig zur individuellen Kontrolle und zum sofortigen Eingreifen bereit sein muss.</p><h3>Typische Voraussetzungen und Versorgungssituationen</h3><ul class="care-list"><li><span class="care-check">✓</span><span>Es können mit hoher Wahrscheinlichkeit täglich und zu nicht vorhersehbaren Zeitpunkten lebensbedrohliche Situationen auftreten, die eine sofortige pflegerische oder ärztliche Intervention erforderlich machen.</span></li><li><span class="care-check">✓</span><span>Eine kontinuierliche Überwachung wichtiger Körperfunktionen, beispielsweise Atmung und Herz-Kreislauf-Funktion, kann notwendig sein.</span></li><li><span class="care-check">✓</span><span>Eine invasive oder nichtinvasive Beatmung kann Teil der Versorgung sein.</span></li><li><span class="care-check">✓</span><span>Bei einer Trachealkanüle können Trachealkanülen- und Sekretmanagement sowie Absaugen erforderlich sein.</span></li><li><span class="care-check">✓</span><span>Die Versorgung erfordert speziell qualifizierte Pflegefachkräfte und wird individuell auf die Patientin oder den Patienten abgestimmt.</span></li></ul><div class="care-note"><span class="care-note-icon">!</span><span>Wichtig: Eine Beatmung oder Trachealkanüle allein begründet nicht automatisch einen Anspruch auf außerklinische Intensivpflege. Ob die medizinischen Voraussetzungen vorliegen, wird individuell ärztlich beurteilt und die außerklinische Intensivpflege entsprechend verordnet.</span></div><p>Bei beatmeten oder trachealkanülierten Patientinnen und Patienten gelten zusätzlich die gesetzlichen Vorgaben zur Potenzialerhebung. Dabei wird insbesondere geprüft, ob eine Beatmungsentwöhnung, eine Umstellung auf nichtinvasive Beatmung oder eine Entfernung der Trachealkanüle möglich ist.</p><a class="care-cta" href="#kontakt"><span><strong>Unverbindlich zur Versorgung beraten lassen</strong><small>Wir beraten Sie persönlich, kompetent und kostenfrei.</small></span><span class="care-cta-arrow">→</span></a></div></div></div></section>'''
-              marker='<section class="contact" id="kontakt">'
-              if marker not in s: raise SystemExit('contact marker missing')
-              s=s.replace(marker,section+marker,1)
-              p.write_text(s)
-          PY
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add index.html
-          git commit -m "Add intensive care information section" || true
-          git push origin HEAD:care-info-update --force
+      - run: echo "Temporary workflow disabled"
