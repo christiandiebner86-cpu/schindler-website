@@ -1,17 +1,8 @@
-name: Merge care info branch
+name: Merge care info branch (disabled)
 on:
-  push:
-    branches: [main]
-permissions:
-  contents: write
-  pull-requests: write
+  workflow_dispatch:
 jobs:
-  merge:
+  noop:
     runs-on: ubuntu-latest
     steps:
-      - name: Create and merge PR
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh pr create --repo ${{ github.repository }} --base main --head care-info-update --title "Add intensive care information section" --body "Adds the missing care information section in Schindler colors with a high-contrast consultation button." || true
-          gh pr merge care-info-update --repo ${{ github.repository }} --merge --admin || gh pr merge care-info-update --repo ${{ github.repository }} --merge
+      - run: echo "Temporary workflow disabled"
