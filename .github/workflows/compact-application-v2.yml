@@ -1,0 +1,37 @@
+name: Compact application v2
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/compact-application-v2.yml']
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update application form
+        run: |
+          cat > /tmp/update.py <<'PY'
+          from pathlib import Path
+          p=Path('index.html'); s=p.read_text(encoding='utf-8')
+          start=s.index('<section class="about" id="bewerbung">')
+          end=s.index('<section class="contact" id="kontakt">', start)
+          new='''<section class="about" id="bewerbung"><div class="wrap"><div class="section-title"><h2>Schnellbewerbung</h2><p>Pflegefachkraft? Bewirb dich in wenigen Minuten – ganz ohne Anschreiben.</p></div><div class="contact-panel bewerbung-panel"><form id="bewerbungsformular"><div class="bewerbung-grid"><label><strong>Name *</strong><input required name="name" autocomplete="name"></label><label><strong>Telefon *</strong><input required name="phone" type="tel" autocomplete="tel"></label><label><strong>E-Mail (optional)</strong><input name="email" type="email" autocomplete="email"></label><label><strong>Qualifikation *</strong><select required name="qualification"><option value="">Bitte auswählen</option><option>Pflegefachfrau / Pflegefachmann</option><option>Gesundheits- und Krankenpfleger/in</option><option>Altenpfleger/in</option><option>Andere Pflegefachkraft</option></select></label><label><strong>Nachricht (optional)</strong><textarea name="message" rows="2" placeholder="Kurz etwas zu dir …"></textarea></label><label><strong>Anhang / Lebenslauf (optional)</strong><input name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png"><small>PDF, Word, JPG oder PNG · max. 10 MB</small></label></div><div class="bewerbung-bottom"><p>Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Angaben gemäß unserer <a href="#datenschutz">Datenschutzerklärung</a> einverstanden.</p><button id="bewerbung-submit" class="btn primary" type="submit">Bewerbung senden →</button></div><p id="bewerbung-status" class="form-status" role="status" aria-live="polite"></p></form></div></div></section>\n'''
+          s=s[:start]+new+s[end:]
+          css='''\n#bewerbung{padding:34px 0!important;scroll-margin-top:110px}#bewerbung .section-title{margin-bottom:16px!important}#bewerbung .section-title h2{font-size:32px!important;margin-bottom:3px!important}#bewerbung .section-title p{font-size:15px!important}.bewerbung-panel{max-width:1040px!important;margin:auto;padding:20px 24px!important}.bewerbung-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 16px!important}.bewerbung-grid label{display:block!important;margin:0!important}.bewerbung-grid strong{display:block;font-size:14px;margin-bottom:3px}.bewerbung-grid input,.bewerbung-grid select,.bewerbung-grid textarea{width:100%;height:42px;padding:8px 11px!important;margin:0!important;border:1px solid #cbdde2;border-radius:9px;font:inherit;background:#fff}.bewerbung-grid textarea{height:58px!important;min-height:58px!important;resize:vertical}.bewerbung-grid input[type=file]{padding:7px 9px!important;font-size:13px}.bewerbung-grid small{display:block;color:#65758a;font-size:11px;margin-top:2px}.bewerbung-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:12px}.bewerbung-bottom p{font-size:11px;color:#65758a;margin:0;max-width:690px}.bewerbung-bottom .btn{flex:0 0 auto;padding:10px 18px!important;cursor:pointer;font:inherit}.bewerbung-panel .form-status{margin:8px 0 0!important;font-size:13px}@media(max-width:760px){#bewerbung{padding:28px 0!important}#bewerbung .section-title{margin-bottom:12px!important}.bewerbung-panel{padding:16px!important}.bewerbung-grid{grid-template-columns:1fr!important;gap:9px!important}.bewerbung-bottom{align-items:stretch;flex-direction:column;gap:8px}.bewerbung-bottom .btn{width:100%}}\n'''
+          s=s.replace('</style>',css+'</style>',1)
+          old="const payload = {name:String(fd.get('name')||'').trim(),phone:String(fd.get('phone')||'').trim(),email:String(fd.get('email')||'').trim(),qualification:String(fd.get('qualification')||'').trim(),message:String(fd.get('message')||'').trim(),source:'schindler-website'};"
+          newjs="""const file = fd.get('attachment');\n    if (file && file.size > 10 * 1024 * 1024) { status.textContent='Der Anhang darf maximal 10 MB groß sein.'; status.className='form-status error'; button.disabled=false; button.textContent='Bewerbung senden →'; return; }\n    let attachmentPath='', attachmentName='', attachmentType='';\n    if (file && file.size) {\n      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');\n      attachmentPath = `${Date.now()}-${crypto.randomUUID()}-${safeName}`; attachmentName=file.name; attachmentType=file.type;\n      const upload = await fetch(`${supabaseUrl}/storage/v1/object/website-applications/${attachmentPath}`, {method:'POST',headers:{apikey:publishableKey,Authorization:`Bearer ${publishableKey}`,'Content-Type':file.type||'application/octet-stream','x-upsert':'false'},body:file});\n      if (!upload.ok) { status.textContent='Der Anhang konnte nicht hochgeladen werden.'; status.className='form-status error'; button.disabled=false; button.textContent='Bewerbung senden →'; return; }\n    }\n    const payload = {name:String(fd.get('name')||'').trim(),phone:String(fd.get('phone')||'').trim(),email:String(fd.get('email')||'').trim(),qualification:String(fd.get('qualification')||'').trim(),message:String(fd.get('message')||'').trim(),attachment_path:attachmentPath||null,attachment_name:attachmentName||null,attachment_type:attachmentType||null,source:'schindler-website'};"""
+          if old not in s: raise SystemExit('JS payload marker missing')
+          s=s.replace(old,newjs,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+          python /tmp/update.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Compact application form and add attachment upload"
+          git push
