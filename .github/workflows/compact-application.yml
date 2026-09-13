@@ -17,43 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Compact application section
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('index.html')
-          s = p.read_text(encoding='utf-8')
-          marker = '.form-status.error{color:#a12626}'
-          css = '''
-#bewerbung{padding:46px 0!important;scroll-margin-top:110px}
-#bewerbung .section-title{margin-bottom:22px!important}
-#bewerbung .section-title h2{font-size:34px!important;margin-bottom:6px!important}
-#bewerbung .section-title p{font-size:16px!important}
-#bewerbung .contact-panel{max-width:960px!important;padding:24px 28px!important}
-#bewerbung form{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;align-items:end}
-#bewerbung form>div:first-child{grid-column:1/-1!important;gap:16px!important}
-#bewerbung form>label{margin-top:0!important;display:block!important}
-#bewerbung form>label:nth-of-type(3){grid-column:1/-1}
-#bewerbung input,#bewerbung select,#bewerbung textarea{padding:10px 12px!important;margin-top:4px!important}
-#bewerbung textarea{min-height:72px!important;height:72px!important;resize:vertical}
-#bewerbung form>p{grid-column:1/-1;margin:2px 0 0!important}
-#bewerbung #bewerbung-submit{grid-column:1/-1;justify-self:start;padding:11px 20px!important}
-#bewerbung #bewerbung-status{grid-column:1/-1}
-@media(max-width:760px){
-  #bewerbung{padding:34px 0!important}
-  #bewerbung .section-title{margin-bottom:16px!important}
-  #bewerbung .section-title h2{font-size:30px!important}
-  #bewerbung .contact-panel{padding:20px 16px!important}
-  #bewerbung form{grid-template-columns:1fr!important;gap:10px!important}
-  #bewerbung form>div:first-child{grid-column:1!important;grid-template-columns:1fr!important;gap:10px!important}
-  #bewerbung form>label:nth-of-type(3),#bewerbung form>p,#bewerbung #bewerbung-submit,#bewerbung #bewerbung-status{grid-column:1!important}
-  #bewerbung textarea{min-height:64px!important;height:64px!important}
-}
-'''
-          if css.strip() not in s:
-              if marker not in s:
-                  raise SystemExit('CSS marker not found')
-              s = s.replace(marker, marker + css, 1)
-              p.write_text(s, encoding='utf-8')
-          PY
+          python -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); marker='.form-status.error{color:#a12626}'; css='\\n#bewerbung{padding:46px 0!important;scroll-margin-top:110px}\\n#bewerbung .section-title{margin-bottom:22px!important}\\n#bewerbung .section-title h2{font-size:34px!important;margin-bottom:6px!important}\\n#bewerbung .section-title p{font-size:16px!important}\\n#bewerbung .contact-panel{max-width:960px!important;padding:24px 28px!important}\\n#bewerbung form{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;align-items:end}\\n#bewerbung form>div:first-child{grid-column:1/-1!important;gap:16px!important}\\n#bewerbung form>label{margin-top:0!important;display:block!important}\\n#bewerbung form>label:nth-of-type(3){grid-column:1/-1}\\n#bewerbung input,#bewerbung select,#bewerbung textarea{padding:10px 12px!important;margin-top:4px!important}\\n#bewerbung textarea{min-height:72px!important;height:72px!important;resize:vertical}\\n#bewerbung form>p{grid-column:1/-1;margin:2px 0 0!important}\\n#bewerbung #bewerbung-submit{grid-column:1/-1;justify-self:start;padding:11px 20px!important}\\n#bewerbung #bewerbung-status{grid-column:1/-1}\\n@media(max-width:760px){#bewerbung{padding:34px 0!important}#bewerbung .section-title{margin-bottom:16px!important}#bewerbung .section-title h2{font-size:30px!important}#bewerbung .contact-panel{padding:20px 16px!important}#bewerbung form{grid-template-columns:1fr!important;gap:10px!important}#bewerbung form>div:first-child{grid-column:1!important;grid-template-columns:1fr!important;gap:10px!important}#bewerbung form>label:nth-of-type(3),#bewerbung form>p,#bewerbung #bewerbung-submit,#bewerbung #bewerbung-status{grid-column:1!important}#bewerbung textarea{min-height:64px!important;height:64px!important}}\\n'; assert marker in s, 'CSS marker not found'; p.write_text(s if css.strip() in s else s.replace(marker,marker+css,1),encoding='utf-8')"
       - name: Commit changes
         run: |
           if git diff --quiet; then
