@@ -42,6 +42,61 @@
 .quick-fields textarea{grid-column:1/-1!important;grid-row:auto!important;height:80px!important;min-height:80px!important}
 @media(max-width:1000px){.quick-fields textarea{grid-column:1/-1!important}}
 @media(max-width:650px){.quick-fields textarea{grid-column:auto!important;height:72px!important}}
+
+/* Ergänzende Besucher- und Karriereinformationen */
+.sch-team,.sch-training,.sch-career{scroll-margin-top:110px}
+.sch-team{padding:58px 0 28px;background:#fff}
+.sch-team-card{background:linear-gradient(135deg,#173653 0%,#087f8c 68%,#0597a5 130%);color:#fff;border-radius:24px;padding:34px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;box-shadow:0 14px 36px #17365326}
+.sch-team-icon{font-size:58px;line-height:1}
+.sch-kicker{font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--t2);margin-bottom:8px}
+.sch-kicker-light{color:#bdf4f7}
+.sch-team h2{margin:4px 0 12px;font-size:clamp(28px,3.5vw,43px);line-height:1.1;color:#fff}
+.sch-team p{max-width:950px;margin:0 0 20px;color:#e7f4f6;font-size:17px;line-height:1.7}
+.sch-light-btn{background:#fff!important;color:var(--navy)!important;border-color:#fff!important}
+
+.sch-training{padding:58px 0;background:#f4fbfc}
+.sch-training .section-title{margin-bottom:28px}
+.sch-training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sch-training-item{background:#fff;border:1px solid #dcecef;border-radius:18px;padding:24px;display:flex;gap:15px;align-items:flex-start;box-shadow:0 8px 24px #17365310}
+.sch-training-icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:grid;place-items:center;background:#eaf8fa;font-size:24px}
+.sch-training-item strong{display:block;color:var(--navy);font-size:18px;margin-bottom:7px}
+.sch-training-item span{display:block;color:#607487;line-height:1.55}
+
+.sch-career{padding:72px 0;background:#fff}
+.sch-career-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:stretch}
+.sch-career-copy{background:#f7fbfc;border:1px solid #dcecef;border-radius:24px;padding:34px}
+.sch-career-copy h2{margin:0 0 14px;color:var(--navy);font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-.03em}
+.sch-career-copy h2 span{color:var(--t)}
+.sch-career-copy>p{color:#5f7284;font-size:17px}
+.sch-salary{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;margin:26px 0}
+.sch-salary-main,.sch-salary-extra{border-radius:18px;padding:22px}
+.sch-salary-main{background:linear-gradient(135deg,#173653,#214b6d);color:#fff}
+.sch-salary-main small{display:block;color:#b8d7e5;font-weight:800;margin-bottom:6px}
+.sch-salary-main strong{display:block;font-size:clamp(24px,2.5vw,34px);line-height:1.15}
+.sch-salary-main span{display:block;color:#dbeaf0;margin-top:8px}
+.sch-salary-extra{background:linear-gradient(135deg,#e9f8fa,#dff4f6);border:1px solid #c7e8eb;color:var(--navy);display:flex;flex-direction:column;justify-content:center}
+.sch-salary-extra strong{font-size:23px;color:var(--t2)}
+.sch-salary-extra span{margin-top:6px;line-height:1.45}
+.sch-career-points{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin:20px 0;color:#41596d;font-weight:750}
+.sch-fineprint{font-size:12px!important;line-height:1.5;margin:18px 0 0!important;color:#718292!important}
+.sch-career-img{border-radius:24px;overflow:hidden;min-height:520px}
+.sch-career-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+@media(max-width:1000px){
+  .sch-training-grid{grid-template-columns:1fr}
+  .sch-career-grid{grid-template-columns:1fr}
+  .sch-career-img{min-height:380px}
+}
+@media(max-width:760px){
+  .sch-team{padding:38px 0 20px}
+  .sch-team-card{grid-template-columns:1fr;padding:24px 20px}
+  .sch-team-icon{font-size:46px}
+  .sch-training,.sch-career{padding:42px 0}
+  .sch-career-copy{padding:24px 18px}
+  .sch-salary{grid-template-columns:1fr}
+  .sch-career-points{grid-template-columns:1fr}
+  .sch-career-img{min-height:300px}
+}
 </style>
 </head>
 <body>
@@ -50,7 +105,7 @@
 <main id="start">
 <section class="hero" style="padding:0"><div class="wrap hero-grid"><div class="hero-copy"><h1>Intensivpflege.<span>Mehr als Pflege.</span><span>Ein Leben in Würde.</span></h1><p>Wir ermöglichen ein selbstbestimmtes Leben in vertrauter Umgebung – mit fachlicher Kompetenz, Herz und Respekt. Ihr Partner für außerklinische Intensivpflege in Leipzig und Umgebung.</p><div class="actions"><a class="btn primary" href="#kontakt">Jetzt unverbindlich anfragen →</a><a class="btn secondary" href="#ueber-uns">Mehr über uns</a></div></div><div class="hero-photo"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png" alt="Persönliche außerklinische Intensivpflege"></div></div></section>
 <div class="trust"><div class="wrap trust-grid"><div class="trust-item"><div class="ico">♙</div><div><b>Fachlich kompetent</b><small>Qualifizierte Pflegefachkräfte</small></div></div><div class="trust-item"><div class="ico">♡</div><div><b>Individuell betreut</b><small>Auf Ihre Bedürfnisse abgestimmt</small></div></div><div class="trust-item"><div class="ico">⌂</div><div><b>In vertrauter Umgebung</b><small>Zuhause leben – mit Sicherheit</small></div></div><div class="trust-item"><div class="ico">◇</div><div><b>Verlässlich an Ihrer Seite</b><small>Heute. Morgen. Und darüber hinaus.</small></div></div></div></div>
-<section id="leistungen"><div class="wrap cards"><article class="card"><img src="leistungen-maskenbeatmung.png" alt="Außerklinische Intensivpflege mit nicht-invasiver Maskenbeatmung"><div class="card-body"><h2>Unsere Leistungen</h2><p>Außerklinische Intensivpflege, Beatmungspflege und individuelle Versorgung – professionell, verlässlich und menschlich.</p><a class="mini" href="#ueber-uns">Zu den Leistungen →</a></div></article><article class="card" id="karriere"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/karriere-team.png" alt="Pflegefachkräfte im Team"><div class="card-body"><h2>Karriere bei Schindler</h2><p>Werde Teil unseres Teams und gestalte mit uns eine Pflege, die wirklich zählt. Wertschätzung, Entwicklung und ein starkes Miteinander.</p><a class="mini" href="#bewerbung">Jetzt bewerben →</a></div></article><article class="card"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png" alt="Persönliche und menschliche Intensivpflege"><div class="card-body"><h2>Kontakt</h2><p>Wir sind für Sie da – kompetent, persönlich und unverbindlich. Lassen Sie uns ins Gespräch kommen.</p><a class="mini" href="#kontakt">Kontakt aufnehmen →</a></div></article></div></section>
+<section id="leistungen"><div class="wrap cards"><article class="card"><img src="leistungen-maskenbeatmung.png" alt="Außerklinische Intensivpflege mit nicht-invasiver Maskenbeatmung"><div class="card-body"><h2>Unsere Leistungen</h2><p>Außerklinische Intensivpflege, Beatmungspflege und individuelle Versorgung – professionell, verlässlich und menschlich.</p><a class="mini" href="#ueber-uns">Zu den Leistungen →</a></div></article><article class="card" id="karriere-teaser"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/karriere-team.png" alt="Pflegefachkräfte im Team"><div class="card-body"><h2>Karriere bei Schindler</h2><p>Werde Teil unseres Teams und gestalte mit uns eine Pflege, die wirklich zählt. Wertschätzung, Entwicklung und ein starkes Miteinander.</p><a class="mini" href="#bewerbung">Jetzt bewerben →</a></div></article><article class="card"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png" alt="Persönliche und menschliche Intensivpflege"><div class="card-body"><h2>Kontakt</h2><p>Wir sind für Sie da – kompetent, persönlich und unverbindlich. Lassen Sie uns ins Gespräch kommen.</p><a class="mini" href="#kontakt">Kontakt aufnehmen →</a></div></article></div></section>
 <section class="about" id="ueber-uns"><div class="wrap"><div class="section-title"><h2>Unsere Werte</h2><p>Darauf können Sie sich verlassen.</p></div><div class="values" id="werte"><div class="value"><div class="ico">♡</div><h3>Menschlichkeit</h3><p>Der Mensch steht bei uns im Mittelpunkt.</p></div><div class="value"><div class="ico">✓</div><h3>Qualität</h3><p>Hohe fachliche Standards und kontinuierliche Weiterbildung.</p></div><div class="value"><div class="ico">♙</div><h3>Vertrauen</h3><p>Eine verlässliche und offene Zusammenarbeit.</p></div><div class="value"><div class="ico">⌁</div><h3>Lebensqualität</h3><p>So viel Selbstbestimmung wie möglich.</p></div></div></div></section>
 <section id="bewerbung" class="quick-apply"><div class="wrap"><div class="quick-box"><div class="quick-copy"><h2>⏱ In 60 Sekunden bewerben.</h2><p>Kein Anschreiben. Kein Lebenslauf nötig.<br>Wir melden uns schnellstmöglich bei Ihnen.</p></div><form id="bewerbungsformular" class="quick-form"><div class="quick-fields"><input required name="name" autocomplete="name" placeholder="Ihr Name *"><select required name="qualification"><option value="">Qualifikation *</option><option>Pflegefachfrau / Pflegefachmann</option><option>Gesundheits- und Krankenpfleger/in</option><option>Altenpfleger/in</option><option>Kinderkrankenpfleger/in</option><option>Andere examinierte Pflegefachkraft</option></select><input required name="phone" type="tel" autocomplete="tel" placeholder="Telefonnummer *"><input required name="email" type="email" autocomplete="email" placeholder="E-Mail-Adresse *"><select required name="aki"><option value="">Weiterbildung AKI *</option><option>Basiskurs AKI</option><option>Expertenkurs AKI</option><option>Basiskurs und Expertenkurs AKI</option><option>Keine AKI-Weiterbildung</option><option>Keine Angabe</option></select><select name="workplace"><option value="">Wo möchten Sie arbeiten?</option><option>Leipzig</option><option>Leipzig / Umgebung bis 20 km</option><option>Leipzig / Umgebung bis 30 km</option><option>Leipzig / Umgebung bis 50 km</option><option>Halle (Saale) / Umgebung</option><option>Sachsen / Sachsen-Anhalt flexibel</option><option>Flexibel / nach Absprache</option></select><textarea name="message" rows="3" placeholder="Nachricht (optional)"></textarea></div><label class="quick-file"><strong>📎 Anlage / Lebenslauf hinzufügen (optional)</strong><input name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png"><small>PDF, Word, JPG oder PNG · max. 10 MB</small></label><div class="quick-bottom"><p>🔒 Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Bewerbung verwendet. Mit dem Absenden stimmen Sie der Verarbeitung gemäß unserer <a href="#datenschutz">Datenschutzerklärung</a> zu.</p><button id="bewerbung-submit" class="quick-submit" type="submit">Jetzt bewerben →</button></div><p id="bewerbung-status" class="form-status" role="status" aria-live="polite"></p></form></div></div></section>
 
@@ -73,6 +128,73 @@
         <a class="care-cta" href="#kontakt"><span><strong>Unverbindlich zur Versorgung beraten lassen</strong><small>Wir beraten Sie persönlich, kompetent und kostenfrei.</small></span><span class="care-cta-arrow">→</span></a>
       </div>
     </details>
+  </div>
+</section>
+
+
+<section class="sch-team" id="teamuebernahme">
+  <div class="wrap">
+    <div class="sch-team-card">
+      <div class="sch-team-icon" aria-hidden="true">👥</div>
+      <div>
+        <div class="sch-kicker sch-kicker-light">Gemeinsam wechseln</div>
+        <h2>Patient plus vertrautes Pflegepersonal – komplette Teams willkommen.</h2>
+        <p>Sie möchten als Patientin oder Patient gemeinsam mit Ihrem bereits vertrauten Pflegepersonal zu uns wechseln? Wir können nach individueller Prüfung komplette Versorgungsteams übernehmen. So kann die vertraute Zusammenarbeit möglichst erhalten bleiben und der Wechsel gemeinsam organisiert werden.</p>
+        <a class="btn sch-light-btn" href="#kontakt">Teamübernahme anfragen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sch-training" id="weiterbildung">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Fort- & Weiterbildung</h2>
+      <p>Wir investieren in fachliche Entwicklung und unterstützen unsere Pflegefachkräfte bei passenden Qualifikationen.</p>
+    </div>
+    <div class="sch-training-grid">
+      <div class="sch-training-item"><div class="sch-training-icon">🎓</div><div><strong>AKI-Fachwissen vertiefen</strong><span>Fort- und Weiterbildungen für die außerklinische Intensiv- und Beatmungspflege.</span></div></div>
+      <div class="sch-training-item"><div class="sch-training-icon">🫁</div><div><strong>Pflegeexpertise ausbauen</strong><span>Gezielte fachliche Entwicklung rund um Beatmung, Trachealkanülenversorgung und komplexe Pflegesituationen.</span></div></div>
+      <div class="sch-training-item"><div class="sch-training-icon">📚</div><div><strong>Weiterentwicklung ermöglichen</strong><span>Individuelle Qualifizierungen werden nach Tätigkeit, Erfahrung und Einsatzbereich abgestimmt.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sch-career" id="karriere">
+  <div class="wrap sch-career-grid">
+    <div class="sch-career-copy">
+      <div class="sch-kicker">Karriere bei Schindler</div>
+      <h2>Pflegefachkraft?<br><span>Dann sollten wir uns kennenlernen.</span></h2>
+      <p>Bei uns zählen Fachwissen, Verlässlichkeit, Menschlichkeit und ein respektvolles Miteinander.</p>
+
+      <div class="sch-salary">
+        <div class="sch-salary-main">
+          <small>Pflegefachkräfte (P3)</small>
+          <strong>ab 4.125 € brutto / Monat Grundgehalt*</strong>
+          <span>je nach Stufe bis 4.966,64 € brutto / Monat Grundgehalt*</span>
+        </div>
+        <div class="sch-salary-extra">
+          <strong>+ 155 € Schichtzulage</strong>
+          <span>zzgl. Sonn-, Feiertags- und Nachtzuschläge sowie mögliche Funktionszulagen</span>
+        </div>
+      </div>
+
+      <div class="sch-career-points">
+        <div>✓ Persönliche Einarbeitung</div>
+        <div>✓ Feste Ansprechpartner</div>
+        <div>✓ Fort- & Weiterbildung</div>
+        <div>✓ Initiativbewerbung möglich</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="#bewerbung">Jetzt schnell bewerben →</a>
+      </div>
+      <p class="sch-fineprint">* Grundgehalt nach Entgeltgruppe und Stufe. Schichtzulage sowie Sonn-, Feiertags- und Nachtzuschläge kommen zusätzlich hinzu.</p>
+    </div>
+
+    <div class="sch-career-img">
+      <img src="https://christiandiebner86-cpu.github.io/halle-website-test/karriere-team.png" alt="Pflegefachkräfte im Team der Intensivpflege">
+    </div>
   </div>
 </section>
 
