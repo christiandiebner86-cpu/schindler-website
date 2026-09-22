@@ -97,11 +97,168 @@
   .sch-career-points{grid-template-columns:1fr}
   .sch-career-img{min-height:300px}
 }
+
+/* Mobile-Optimierung */
+.menu-toggle{display:none}
+html{scroll-padding-top:96px}
+body{overflow-x:hidden}
+img{max-width:100%}
+@media(max-width:760px){
+  html{scroll-padding-top:88px}
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  .wrap{width:100%;padding-left:16px!important;padding-right:16px!important}
+
+  .top .wrap{min-height:44px;padding-top:7px!important;padding-bottom:7px!important}
+  .top-right{width:100%;display:grid!important;grid-template-columns:1fr;gap:2px!important;text-align:center}
+  .top-right a{font-size:12.5px;line-height:1.35;overflow-wrap:anywhere}
+  .mainhead{position:sticky!important;top:0;z-index:80;background:#fff}
+  .head{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center!important;gap:10px!important;padding:8px 0!important}
+  .logo{min-width:0!important;justify-content:flex-start!important}
+  .logo img{width:190px!important;height:auto!important;max-height:82px!important;object-fit:contain!important;object-position:left center!important}
+
+  .menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:88px;min-height:46px;padding:9px 12px;border:1px solid #cfe2e6;border-radius:14px;background:#f6fbfc;color:var(--navy);font:inherit;font-weight:850;cursor:pointer}
+  .menu-icon{font-size:20px;line-height:1}
+  .nav{grid-column:1/-1;display:none!important;overflow:visible!important;max-width:none!important;padding:8px 0 4px!important;gap:8px!important;flex-direction:column!important;align-items:stretch!important}
+  .mainhead.menu-open .nav{display:flex!important}
+  .nav a{display:flex;align-items:center;justify-content:space-between;min-height:46px;padding:10px 14px!important;border:1px solid #dcecef!important;border-radius:12px!important;background:#f8fcfd!important;font-size:14px!important}
+  .nav a::after{content:"›";font-size:20px;color:var(--t)}
+  .nav .cta{display:flex!important;background:var(--t)!important;color:#fff!important;border-color:var(--t)!important}
+  .nav .cta::after{color:#fff}
+
+  .hero-copy{padding:30px 0 24px!important}
+  .hero h1{font-size:clamp(34px,10vw,43px)!important;line-height:1.04!important;letter-spacing:-.035em!important}
+  .hero p{font-size:16px!important;line-height:1.65!important;margin-top:18px!important}
+  .hero .actions{gap:10px!important;margin-top:22px!important}
+  .hero .btn{min-height:50px;padding:12px 16px!important;font-size:15px}
+  .hero-photo{min-height:245px!important;height:52vw;max-height:330px;border-radius:18px!important;margin-bottom:18px!important}
+  .hero-photo img{object-position:center center}
+
+  .trust{margin-top:0}
+  .trust-grid{display:grid!important;grid-template-columns:1fr 1fr!important}
+  .trust-item{padding:16px 10px!important;gap:10px!important;border-right:0!important;border-bottom:1px solid #e4eff2!important}
+  .trust-item:nth-child(odd){border-right:1px solid #e4eff2!important}
+  .trust-item:nth-last-child(-n+2){border-bottom:0!important}
+  .trust-item .ico{width:40px!important;height:40px!important;flex-basis:40px!important;font-size:20px!important}
+  .trust-item b{font-size:13px!important;line-height:1.25}
+  .trust-item small{display:block;font-size:11.5px;line-height:1.35;margin-top:2px}
+
+  section{padding-top:44px;padding-bottom:44px}
+  .cards{gap:16px!important}
+  .card{border-radius:16px!important}
+  .card img{height:205px!important}
+  .card-body{padding:20px 18px!important}
+  .card h2{font-size:23px!important}
+  .card p{font-size:15px;line-height:1.6}
+  .mini{min-height:46px;width:100%;justify-content:center}
+
+  .section-title{margin-bottom:26px!important}
+  .section-title h2{font-size:29px!important;line-height:1.12!important}
+  .section-title p{font-size:15.5px!important;line-height:1.55}
+  .values{gap:18px!important}
+  .value{padding:6px 12px 14px}
+  .value p{font-size:15px;line-height:1.55}
+
+  .quick-apply{padding:30px 0!important}
+  .quick-box{padding:22px 16px!important;border-radius:18px!important;gap:18px!important}
+  .quick-copy h2{font-size:27px!important}
+  .quick-copy p{font-size:15px!important;line-height:1.55!important}
+  .quick-fields{grid-template-columns:1fr!important;gap:10px!important}
+  .quick-fields input,.quick-fields select,.quick-fields textarea{font-size:16px!important;min-height:50px;height:auto!important;padding:12px 13px!important}
+  .quick-fields textarea{min-height:88px!important}
+  .quick-file{margin-top:10px!important;padding:12px!important}
+  .quick-file input{font-size:14px!important;max-width:100%}
+  .quick-bottom{grid-template-columns:1fr!important;gap:12px!important}
+  .quick-bottom p{font-size:11.5px!important;line-height:1.5!important}
+  .quick-submit{min-height:50px;font-size:16px!important}
+  .quick-apply .form-status{font-size:14px;line-height:1.45}
+
+  .care-info{padding:40px 0!important}
+  .care-info-card{border-radius:18px!important}
+  .care-info-head{padding:18px 16px!important}
+  .care-info-head h2{font-size:22px!important;line-height:1.18!important}
+  .care-info-body{padding:18px 16px!important}
+  .care-info-body>p,.care-list li{font-size:15px!important;line-height:1.6!important}
+  .care-list li{grid-template-columns:28px 1fr!important;gap:10px!important}
+  .care-check{width:27px!important;height:27px!important}
+  .care-note{padding:15px!important;margin:18px 0!important;font-size:14.5px}
+  .care-cta{min-height:52px!important;font-size:14.5px!important}
+
+  .sch-team{padding:36px 0 18px!important}
+  .sch-team-card{padding:22px 18px!important;border-radius:18px!important;gap:15px!important}
+  .sch-team-icon{font-size:42px!important}
+  .sch-team h2{font-size:27px!important;line-height:1.12!important}
+  .sch-team p{font-size:15px!important;line-height:1.65!important}
+  .sch-light-btn{width:100%;min-height:50px}
+
+  .sch-training,.sch-career{padding:38px 0!important}
+  .sch-training-grid{gap:12px!important}
+  .sch-training-item{padding:18px!important;border-radius:15px!important}
+  .sch-training-item strong{font-size:16.5px!important}
+  .sch-training-item span{font-size:14.5px!important}
+  .sch-training-icon{width:42px!important;height:42px!important;flex-basis:42px!important;font-size:21px!important}
+
+  .sch-career-grid{gap:18px!important}
+  .sch-career-copy{padding:22px 17px!important;border-radius:18px!important}
+  .sch-career-copy h2{font-size:30px!important;line-height:1.05!important}
+  .sch-career-copy>p{font-size:15px!important}
+  .sch-salary{gap:10px!important;margin:20px 0!important}
+  .sch-salary-main,.sch-salary-extra{padding:18px!important;border-radius:15px!important}
+  .sch-salary-main strong{font-size:26px!important}
+  .sch-salary-main span,.sch-salary-extra span{font-size:14px!important}
+  .sch-salary-extra strong{font-size:21px!important}
+  .sch-career-points{gap:8px!important;font-size:14.5px}
+  .sch-career-copy .actions{display:block!important}
+  .sch-career-copy .btn{width:100%;min-height:50px}
+  .sch-career-img{min-height:260px!important;height:70vw;max-height:380px}
+  .sch-career-img img{object-position:center center}
+
+  .contact{padding:40px 0!important}
+  .contact-grid{gap:18px!important}
+  .contact-panel{padding:22px 17px!important;border-radius:18px!important}
+  .contact-panel h2{font-size:29px!important}
+  .contact-panel p{font-size:15px;line-height:1.6}
+  .contact-lines{gap:13px!important}
+  .contact-line{gap:11px!important}
+  .contact-line strong,.contact-line a{overflow-wrap:anywhere;word-break:break-word}
+  .contact-image{min-height:245px!important;height:65vw;max-height:340px;border-radius:18px!important}
+
+  .qmstrip{padding:24px 0!important}
+  .qmstrip .wrap{gap:16px!important}
+  .qmstrip h3{font-size:18px!important}
+  .qmstrip p{font-size:14px}
+  .qmstrip .btn{min-height:48px!important}
+
+  .legalbox details{padding:16px 0!important}
+  .legalbox summary{font-size:15px}
+  .legalbox p{font-size:14px;line-height:1.65;overflow-wrap:anywhere}
+
+  .footer{padding:26px 0 calc(24px + env(safe-area-inset-bottom))!important}
+  .footer-grid{gap:16px!important;text-align:center}
+  .footer-logo img{max-width:190px!important;height:auto!important}
+  .foot-label{margin-top:2px}
+  .foot-value{font-size:14.5px;overflow-wrap:anywhere!important}
+  .bottom{align-items:center;text-align:center;font-size:12px!important}
+
+  .mobile-apply{left:10px!important;right:10px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;min-height:52px!important;padding:13px 16px!important;font-size:15px!important;box-shadow:0 10px 28px #0004!important}
+}
+
+@media(max-width:390px){
+  .wrap{padding-left:13px!important;padding-right:13px!important}
+  .logo img{width:168px!important}
+  .menu-toggle{min-width:78px;padding-left:10px;padding-right:10px}
+  .hero h1{font-size:33px!important}
+  .trust-grid{grid-template-columns:1fr!important}
+  .trust-item:nth-child(odd){border-right:0!important}
+  .trust-item:nth-last-child(2){border-bottom:1px solid #e4eff2!important}
+  .trust-item:last-child{border-bottom:0!important}
+  .card img{height:185px!important}
+  .sch-career-copy h2{font-size:28px!important}
+}
 </style>
 </head>
 <body>
 <div class="top"><div class="wrap"><div class="top-left">♥ &nbsp; In Leipzig und Umgebung – für ein selbstbestimmtes Leben.</div><div class="top-right"><a href="tel:+4934938238868">☎ &nbsp;03493 82 38 868</a><a href="mailto:intensivpflegeschindler@gmail.com">✉ &nbsp;intensivpflegeschindler@gmail.com</a></div></div></div>
-<header class="mainhead"><div class="wrap head"><a class="logo" href="#start"><img src="schindler-logo.png" alt="Schindler Intensivpflege"></a><nav class="nav"><a href="#start">Startseite</a><a href="#ueber-uns">Über uns</a><a href="#leistungen">Leistungen</a><a href="#karriere">Karriere</a><a href="#werte">Wissenswertes</a><a href="#kontakt">Kontakt</a><a class="cta" href="#kontakt">Jetzt anfragen →</a></nav></div></header>
+<header class="mainhead"><div class="wrap head"><a class="logo" href="#start"><img src="schindler-logo.png" alt="Schindler Intensivpflege"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainnav"><span>Menü</span><span class="menu-icon" aria-hidden="true">☰</span></button><nav class="nav" id="mainnav"><a href="#start">Startseite</a><a href="#ueber-uns">Über uns</a><a href="#leistungen">Leistungen</a><a href="#karriere">Karriere</a><a href="#werte">Wissenswertes</a><a href="#kontakt">Kontakt</a><a class="cta" href="#kontakt">Jetzt anfragen →</a></nav></div></header>
 <main id="start">
 <section class="hero" style="padding:0"><div class="wrap hero-grid"><div class="hero-copy"><h1>Intensivpflege.<span>Mehr als Pflege.</span><span>Ein Leben in Würde.</span></h1><p>Wir ermöglichen ein selbstbestimmtes Leben in vertrauter Umgebung – mit fachlicher Kompetenz, Herz und Respekt. Ihr Partner für außerklinische Intensivpflege in Leipzig und Umgebung.</p><div class="actions"><a class="btn primary" href="#kontakt">Jetzt unverbindlich anfragen →</a><a class="btn secondary" href="#ueber-uns">Mehr über uns</a></div></div><div class="hero-photo"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png" alt="Persönliche außerklinische Intensivpflege"></div></div></section>
 <div class="trust"><div class="wrap trust-grid"><div class="trust-item"><div class="ico">♙</div><div><b>Fachlich kompetent</b><small>Qualifizierte Pflegefachkräfte</small></div></div><div class="trust-item"><div class="ico">♡</div><div><b>Individuell betreut</b><small>Auf Ihre Bedürfnisse abgestimmt</small></div></div><div class="trust-item"><div class="ico">⌂</div><div><b>In vertrauter Umgebung</b><small>Zuhause leben – mit Sicherheit</small></div></div><div class="trust-item"><div class="ico">◇</div><div><b>Verlässlich an Ihrer Seite</b><small>Heute. Morgen. Und darüber hinaus.</small></div></div></div></div>
@@ -203,7 +360,7 @@
 <section class="legalbox" id="rechtliches"><div class="wrap"><details id="impressum"><summary>Impressum</summary><p><strong>Intensivpflege Schindler GmbH</strong><br>Uhlandweg 10, 04316 Leipzig<br>Geschäftsführer: Hans Egbert Schindler<br>Telefon: 03493 82 38 868<br>E-Mail: intensivpflegeschindler@gmail.com<br>Handelsregister: Amtsgericht Leipzig, HRB 42894</p></details><details id="datenschutz"><summary>Datenschutzerklärung</summary><p>Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist die Intensivpflege Schindler GmbH, Uhlandweg 10, 04316 Leipzig. Bei Kontaktaufnahme oder Bewerbung verarbeiten wir die von Ihnen mitgeteilten Daten zur Bearbeitung Ihrer Anfrage bzw. Bewerbung. Für die Schnellbewerbung werden Supabase zur Speicherung und technischen Verarbeitung sowie Resend für den E-Mail-Versand eingesetzt. Die Website verwendet derzeit keine Analyse- oder Marketing-Cookies. Beim Hosting über GitHub Pages können technisch erforderliche Zugriffsdaten durch den Hostinganbieter verarbeitet werden.</p></details></div></section>
 </main>
 <footer class="footer"><div class="wrap"><div class="footer-grid"><div class="footer-logo"><img src="schindler-logo.png" alt="Schindler Intensivpflege"></div><div><div class="foot-label">Telefon</div><div class="foot-value">03493 82 38 868</div></div><div><div class="foot-label">E-Mail</div><div class="foot-value">intensivpflegeschindler@gmail.com</div></div><div><div class="foot-label">Adresse</div><div class="foot-value">Uhlandweg 10<br>04316 Leipzig</div></div></div><div class="bottom"><span>© 2026 Intensivpflege Schindler GmbH</span><span><a href="#impressum">Impressum</a> &nbsp; | &nbsp; <a href="#datenschutz">Datenschutz</a></span><span>Wir leben Wertschätzung.</span></div></div></footer>
-<a class="mobile-apply" href="#bewerbung">Jetzt unverbindlich anfragen</a>
+<a class="mobile-apply" href="#bewerbung">In 60 Sekunden bewerben →</a>
 <script>
 (() => {
   const form = document.getElementById('bewerbungsformular');
@@ -320,6 +477,34 @@
       button.textContent = 'Jetzt bewerben →';
     }
   });
+})();
+</script>
+
+<script>
+(() => {
+  const header = document.querySelector('.mainhead');
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('mainnav');
+  if (!header || !toggle || !nav) return;
+
+  const closeMenu = () => {
+    header.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded','false');
+    const icon = toggle.querySelector('.menu-icon');
+    if (icon) icon.textContent = '☰';
+  };
+
+  toggle.addEventListener('click', () => {
+    const open = !header.classList.contains('menu-open');
+    header.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    const icon = toggle.querySelector('.menu-icon');
+    if (icon) icon.textContent = open ? '✕' : '☰';
+  });
+
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 760) closeMenu(); });
 })();
 </script>
 </body>
