@@ -36,6 +36,12 @@
 @media(max-width:1050px){.head{gap:14px}.nav{max-width:100%;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.contact-panel,.contact-image{min-width:0}.foot-value,.contact-line strong{overflow-wrap:anywhere}}
 @media(max-width:760px){body{padding-bottom:78px}.mainhead{position:relative}.nav{gap:10px;padding:2px 2px 8px;justify-content:flex-start}.nav a{font-size:13px;padding:8px 10px;border:1px solid #dcecef;border-radius:999px;background:#f8fcfd}.top-right{gap:6px 14px}.top-right a{overflow-wrap:anywhere;text-align:center}.hero-copy{padding:34px 0}.hero .actions,.contact-panel .actions{display:grid;grid-template-columns:1fr;width:100%}.hero .btn,.contact-panel .btn{width:100%}.contact-panel{padding:26px 20px}.contact-line{align-items:flex-start}.contact-line .ico{margin-top:2px}.contact-image{min-height:260px}.qmstrip .btn{width:100%}.footer-grid{gap:20px}.bottom{gap:8px}.care-info-card{border-radius:18px}.care-info-head{gap:10px}.care-info-body h3{font-size:22px}.care-list li{grid-template-columns:30px 1fr;gap:10px}.care-check{width:28px;height:28px}.quick-file input{font-size:14px}.mobile-apply{min-height:50px;display:flex;align-items:center;justify-content:center}}
 @media(max-width:480px){.wrap{padding-left:15px;padding-right:15px}.logo{min-width:0}.logo img{width:min(205px,80vw);height:58px}.top{font-size:13px}.top-right{flex-direction:column;align-items:center}.hero h1{font-size:36px;line-height:1.06}.hero p{font-size:16px;margin-top:18px}.hero-photo{min-height:250px}.trust-item{padding:18px 8px}.ico{flex-basis:44px;height:44px}.card img{height:190px}.card-body{padding:20px}.section-title h2{font-size:30px}.quick-box{padding:18px 14px}.quick-copy h2{font-size:25px}.quick-fields input,.quick-fields select,.quick-fields textarea{font-size:16px}.care-info{padding:34px 0}.care-info-head{padding:16px}.care-info-head h2{font-size:21px}.care-details>summary:after{flex-basis:32px;width:32px;height:32px;font-size:22px}.care-info-body{padding:16px}.care-info-body>p,.care-list li{font-size:15px}.care-note{padding:16px}.care-cta{font-size:15px}.contact-panel h2{font-size:30px}.qmstrip h3{font-size:19px}.mobile-apply{left:10px;right:10px;bottom:10px}}
+
+/* Schnellbewerbung – gleiche Funktion wie bei Intensivpflege Halle */
+.quick-fields input[name=email]{grid-column:auto}
+.quick-fields textarea{grid-column:1/-1!important;grid-row:auto!important;height:80px!important;min-height:80px!important}
+@media(max-width:1000px){.quick-fields textarea{grid-column:1/-1!important}}
+@media(max-width:650px){.quick-fields textarea{grid-column:auto!important;height:72px!important}}
 </style>
 </head>
 <body>
@@ -46,7 +52,7 @@
 <div class="trust"><div class="wrap trust-grid"><div class="trust-item"><div class="ico">♙</div><div><b>Fachlich kompetent</b><small>Qualifizierte Pflegefachkräfte</small></div></div><div class="trust-item"><div class="ico">♡</div><div><b>Individuell betreut</b><small>Auf Ihre Bedürfnisse abgestimmt</small></div></div><div class="trust-item"><div class="ico">⌂</div><div><b>In vertrauter Umgebung</b><small>Zuhause leben – mit Sicherheit</small></div></div><div class="trust-item"><div class="ico">◇</div><div><b>Verlässlich an Ihrer Seite</b><small>Heute. Morgen. Und darüber hinaus.</small></div></div></div></div>
 <section id="leistungen"><div class="wrap cards"><article class="card"><img src="leistungen-maskenbeatmung.png" alt="Außerklinische Intensivpflege mit nicht-invasiver Maskenbeatmung"><div class="card-body"><h2>Unsere Leistungen</h2><p>Außerklinische Intensivpflege, Beatmungspflege und individuelle Versorgung – professionell, verlässlich und menschlich.</p><a class="mini" href="#ueber-uns">Zu den Leistungen →</a></div></article><article class="card" id="karriere"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/karriere-team.png" alt="Pflegefachkräfte im Team"><div class="card-body"><h2>Karriere bei Schindler</h2><p>Werde Teil unseres Teams und gestalte mit uns eine Pflege, die wirklich zählt. Wertschätzung, Entwicklung und ein starkes Miteinander.</p><a class="mini" href="#bewerbung">Jetzt bewerben →</a></div></article><article class="card"><img src="https://christiandiebner86-cpu.github.io/halle-website-test/hero-intensivpflege.png" alt="Persönliche und menschliche Intensivpflege"><div class="card-body"><h2>Kontakt</h2><p>Wir sind für Sie da – kompetent, persönlich und unverbindlich. Lassen Sie uns ins Gespräch kommen.</p><a class="mini" href="#kontakt">Kontakt aufnehmen →</a></div></article></div></section>
 <section class="about" id="ueber-uns"><div class="wrap"><div class="section-title"><h2>Unsere Werte</h2><p>Darauf können Sie sich verlassen.</p></div><div class="values" id="werte"><div class="value"><div class="ico">♡</div><h3>Menschlichkeit</h3><p>Der Mensch steht bei uns im Mittelpunkt.</p></div><div class="value"><div class="ico">✓</div><h3>Qualität</h3><p>Hohe fachliche Standards und kontinuierliche Weiterbildung.</p></div><div class="value"><div class="ico">♙</div><h3>Vertrauen</h3><p>Eine verlässliche und offene Zusammenarbeit.</p></div><div class="value"><div class="ico">⌁</div><h3>Lebensqualität</h3><p>So viel Selbstbestimmung wie möglich.</p></div></div></div></section>
-<section id="bewerbung" class="quick-apply"><div class="wrap"><div class="quick-box"><div class="quick-copy"><h2>◷ In 60 Sekunden bewerben.</h2><p>Kein Anschreiben nötig.<br>Lebenslauf optional.<br>Wir melden uns schnellstmöglich bei dir.</p></div><form id="bewerbungsformular" class="quick-form"><div class="quick-fields"><input required name="name" autocomplete="name" placeholder="Dein Name *"><input required name="phone" type="tel" autocomplete="tel" placeholder="Telefonnummer *"><input name="email" type="email" autocomplete="email" placeholder="E-Mail (optional)"><select required name="qualification"><option value="">Qualifikation *</option><option>Pflegefachfrau / Pflegefachmann</option><option>Gesundheits- und Krankenpfleger/in</option><option>Altenpfleger/in</option><option>Andere Pflegefachkraft</option></select><textarea name="message" rows="3" placeholder="Nachricht (optional)"></textarea></div><label class="quick-file"><strong>📎 Anhang / Lebenslauf hinzufügen (optional)</strong><input name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png"><small>PDF, Word, JPG oder PNG · max. 10 MB</small></label><div class="quick-bottom"><p>🔒 Deine Angaben werden ausschließlich zur Bearbeitung deiner Bewerbung verwendet. Mit dem Absenden stimmst du der Verarbeitung gemäß unserer <a href="#datenschutz">Datenschutzerklärung</a> zu.</p><button id="bewerbung-submit" class="quick-submit" type="submit">Jetzt bewerben →</button></div><p id="bewerbung-status" class="form-status" role="status" aria-live="polite"></p></form></div></div></section>
+<section id="bewerbung" class="quick-apply"><div class="wrap"><div class="quick-box"><div class="quick-copy"><h2>⏱ In 60 Sekunden bewerben.</h2><p>Kein Anschreiben. Kein Lebenslauf nötig.<br>Wir melden uns schnellstmöglich bei Ihnen.</p></div><form id="bewerbungsformular" class="quick-form"><div class="quick-fields"><input required name="name" autocomplete="name" placeholder="Ihr Name *"><select required name="qualification"><option value="">Qualifikation *</option><option>Pflegefachfrau / Pflegefachmann</option><option>Gesundheits- und Krankenpfleger/in</option><option>Altenpfleger/in</option><option>Kinderkrankenpfleger/in</option><option>Andere examinierte Pflegefachkraft</option></select><input required name="phone" type="tel" autocomplete="tel" placeholder="Telefonnummer *"><input required name="email" type="email" autocomplete="email" placeholder="E-Mail-Adresse *"><select required name="aki"><option value="">Weiterbildung AKI *</option><option>Basiskurs AKI</option><option>Expertenkurs AKI</option><option>Basiskurs und Expertenkurs AKI</option><option>Keine AKI-Weiterbildung</option><option>Keine Angabe</option></select><select name="workplace"><option value="">Wo möchten Sie arbeiten?</option><option>Leipzig</option><option>Leipzig / Umgebung bis 20 km</option><option>Leipzig / Umgebung bis 30 km</option><option>Leipzig / Umgebung bis 50 km</option><option>Halle (Saale) / Umgebung</option><option>Sachsen / Sachsen-Anhalt flexibel</option><option>Flexibel / nach Absprache</option></select><textarea name="message" rows="3" placeholder="Nachricht (optional)"></textarea></div><label class="quick-file"><strong>📎 Anlage / Lebenslauf hinzufügen (optional)</strong><input name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png"><small>PDF, Word, JPG oder PNG · max. 10 MB</small></label><div class="quick-bottom"><p>🔒 Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Bewerbung verwendet. Mit dem Absenden stimmen Sie der Verarbeitung gemäß unserer <a href="#datenschutz">Datenschutzerklärung</a> zu.</p><button id="bewerbung-submit" class="quick-submit" type="submit">Jetzt bewerben →</button></div><p id="bewerbung-status" class="form-status" role="status" aria-live="polite"></p></form></div></div></section>
 
 <section class="care-info" id="wann-intensivpflege">
   <div class="wrap">
@@ -84,38 +90,112 @@
   const button = document.getElementById('bewerbung-submit');
   const supabaseUrl = 'https://hnuhmjxoqwfkvsotpwlw.supabase.co';
   const publishableKey = 'sb_publishable_2IK97G82zINOwDF-q5dNuw_uwYID-yn';
+
+  const setStatus = (text, type='') => {
+    status.textContent = text;
+    status.className = 'form-status' + (type ? ' ' + type : '');
+  };
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    status.textContent = '';
-    status.className = 'form-status';
+    setStatus('');
     button.disabled = true;
     button.textContent = 'Wird gesendet …';
-    const fd = new FormData(form);
-    const file = fd.get('attachment');
-    if (file && file.size > 10 * 1024 * 1024) { status.textContent='Der Anhang darf maximal 10 MB groß sein.'; status.className='form-status error'; button.disabled=false; button.textContent='Bewerbung senden →'; return; }
-    let attachmentPath='', attachmentName='', attachmentType='';
-    if (file && file.size) {
-      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
-      attachmentPath = `${Date.now()}-${crypto.randomUUID()}-${safeName}`; attachmentName=file.name; attachmentType=file.type;
-      const upload = await fetch(`${supabaseUrl}/storage/v1/object/website-applications/${attachmentPath}`, {method:'POST',headers:{apikey:publishableKey,Authorization:`Bearer ${publishableKey}`,'Content-Type':file.type||'application/octet-stream','x-upsert':'false'},body:file});
-      if (!upload.ok) { status.textContent='Der Anhang konnte nicht hochgeladen werden.'; status.className='form-status error'; button.disabled=false; button.textContent='Bewerbung senden →'; return; }
-    }
-    const payload = {name:String(fd.get('name')||'').trim(),phone:String(fd.get('phone')||'').trim(),email:String(fd.get('email')||'').trim(),qualification:String(fd.get('qualification')||'').trim(),message:String(fd.get('message')||'').trim(),attachment_path:attachmentPath||null,attachment_name:attachmentName||null,attachment_type:attachmentType||null,source:'schindler-website'};
+
     try {
-      const db = await fetch(`${supabaseUrl}/rest/v1/website_applications`, {method:'POST',headers:{apikey:publishableKey,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(payload)});
+      const fd = new FormData(form);
+      const file = fd.get('attachment');
+      let attachmentPath = null;
+      let attachmentName = null;
+      let attachmentType = null;
+
+      if (file && file.size) {
+        if (file.size > 10 * 1024 * 1024) throw new Error('Die Anlage darf maximal 10 MB groß sein.');
+
+        const ext = (file.name.split('.').pop() || '').toLowerCase();
+        const typeByExt = {
+          pdf:'application/pdf',
+          doc:'application/msword',
+          docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          jpg:'image/jpeg',
+          jpeg:'image/jpeg',
+          png:'image/png'
+        };
+        const allowed = Object.values(typeByExt);
+        attachmentType = typeByExt[ext] || file.type || '';
+        if (!allowed.includes(attachmentType)) throw new Error('Dateityp nicht unterstützt. Bitte PDF, Word, JPG oder PNG verwenden.');
+
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+        attachmentPath = crypto.randomUUID() + '/' + safeName;
+        attachmentName = file.name;
+        const encodedPath = attachmentPath.split('/').map(encodeURIComponent).join('/');
+
+        const upload = await fetch(`${supabaseUrl}/storage/v1/object/website-applications/${encodedPath}`, {
+          method:'POST',
+          headers:{
+            apikey:publishableKey,
+            Authorization:`Bearer ${publishableKey}`,
+            'Content-Type':attachmentType,
+            'x-upsert':'false'
+          },
+          body:file
+        });
+        if (!upload.ok) throw new Error('Die Anlage konnte nicht hochgeladen werden.');
+      }
+
+      const aki = String(fd.get('aki') || '').trim();
+      const workplace = String(fd.get('workplace') || '').trim();
+      const userMessage = String(fd.get('message') || '').trim();
+      const message = [
+        aki ? 'Weiterbildung AKI: ' + aki : '',
+        workplace ? 'Gewünschter Arbeitsort: ' + workplace : '',
+        userMessage ? 'Nachricht: ' + userMessage : ''
+      ].filter(Boolean).join('\n\n') || null;
+
+      const payload = {
+        name:String(fd.get('name') || '').trim(),
+        email:String(fd.get('email') || '').trim(),
+        phone:String(fd.get('phone') || '').trim(),
+        qualification:String(fd.get('qualification') || '').trim(),
+        message,
+        attachment_path:attachmentPath,
+        attachment_name:attachmentName,
+        attachment_type:attachmentType,
+        source:'schindler-website'
+      };
+
+      const db = await fetch(`${supabaseUrl}/rest/v1/website_applications`, {
+        method:'POST',
+        headers:{
+          apikey:publishableKey,
+          Authorization:`Bearer ${publishableKey}`,
+          'Content-Type':'application/json',
+          Prefer:'return=minimal'
+        },
+        body:JSON.stringify(payload)
+      });
       if (!db.ok) throw new Error('Die Bewerbung konnte nicht gespeichert werden.');
-      const mail = await fetch(`${supabaseUrl}/functions/v1/send-website-application`, {method:'POST',headers:{apikey:publishableKey,Authorization:`Bearer ${publishableKey}`,'Content-Type':'application/json'},body:JSON.stringify(payload)});
-      const result = await mail.json().catch(()=>({}));
-      if (!mail.ok) throw new Error(result.error||'Die E-Mail konnte nicht gesendet werden.');
+
+      const mail = await fetch(`${supabaseUrl}/functions/v1/send-website-application`, {
+        method:'POST',
+        headers:{
+          apikey:publishableKey,
+          Authorization:`Bearer ${publishableKey}`,
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(payload)
+      });
+      const result = await mail.json().catch(() => ({}));
+      if (!mail.ok || result.error) throw new Error(result.error || 'Die E-Mail-Benachrichtigung konnte nicht gesendet werden.');
+
       form.reset();
-      status.textContent = 'Vielen Dank! Deine Bewerbung wurde erfolgreich gesendet.';
-      status.className = 'form-status ok';
+      setStatus('Vielen Dank! Ihre Schnellbewerbung wurde übermittelt. Wir melden uns bei Ihnen.','ok');
     } catch (error) {
-      status.textContent = error?.message || 'Beim Senden ist ein Fehler aufgetreten. Bitte versuche es erneut.';
-      status.className = 'form-status error';
+      console.error(error);
+      setStatus(error?.message || 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.','error');
     } finally {
       button.disabled = false;
-      button.textContent = 'Bewerbung senden →';
+      button.textContent = 'Jetzt bewerben →';
     }
   });
 })();
